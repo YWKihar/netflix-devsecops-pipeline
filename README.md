@@ -1,5 +1,8 @@
 # netflix-devsecops-pipeline
 
+<img width="738" height="414" alt="netflix" src="https://github.com/user-attachments/assets/76fa1044-6942-4313-abfe-533c02a94bab" />
+
+
 DevSecOps CI/CD pipeline for a React-based Netflix Clone using Jenkins, SonarQube, OWASP Dependency-Check, Trivy, Docker, Docker Hub, and AWS EC2.
 
 ## Project Workflow
@@ -21,4 +24,6 @@ In this project, I will implement a complete DevSecOps lifecycle, which includes
 
 ## Application Preview
 
-![Netflix Clone UI](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_dgXATdxog5yKf7uiiFAng.jpeg)
+<img width="738" height="414" alt="netflix" src="https://github.com/user-attachments/assets/17c73985-e8fd-4b12-b245-70edd3a5a7cc" />
+<img width="1280" height="638" alt="Application Preview" src="https://github.com/user-attachments/assets/5766c6c0-5b0a-42e2-ac2f-e5dca473ba28" />
+
