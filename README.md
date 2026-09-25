@@ -23,7 +23,5 @@ In this project, I will implement a complete DevSecOps lifecycle, which includes
 * **Monitoring:** Configuring Prometheus and Grafana to collect metrics, monitor application performance, and visualize cluster health.
 
 ## Application Preview
-
-<img width="738" height="414" alt="netflix" src="https://github.com/user-attachments/assets/17c73985-e8fd-4b12-b245-70edd3a5a7cc" />
 <img width="1280" height="638" alt="Application Preview" src="https://github.com/user-attachments/assets/5766c6c0-5b0a-42e2-ac2f-e5dca473ba28" />
 
