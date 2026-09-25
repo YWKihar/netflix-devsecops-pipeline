@@ -4,7 +4,7 @@ DevSecOps CI/CD pipeline for a React-based Netflix Clone using Jenkins, SonarQub
 
 ## Project Workflow
 
-![Workflow of the Project](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*h84EZTIsO_2orqbdvw0ntQ.gif)
+![Workflow of the Project](https://drive.google.com/file/d/1klM429N9Cw6Lwb2kr_svj5PaMD9fW7lh/view?usp=sharing)
 
 ## Scope of Work
 
