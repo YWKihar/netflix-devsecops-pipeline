@@ -1,7 +1,6 @@
 # netflix-devsecops-pipeline
 
-<img width="547" height="365" alt="netflix" src="https://github.com/user-attachments/assets/600c2d50-9d0a-43de-92a0-5cda0e9ddf27" />
-
+<img width="2172" height="724" alt="work" src="https://github.com/user-attachments/assets/e7c5f2ca-d617-477f-ad20-870a6300317e" />
 
 DevSecOps CI/CD pipeline for a React-based Netflix Clone using Jenkins, SonarQube, OWASP Dependency-Check, Trivy, Docker, Docker Hub, and AWS EC2.
 
@@ -23,5 +22,4 @@ In this project, I will implement a complete DevSecOps lifecycle, which includes
 * **Monitoring:** Configuring Prometheus and Grafana to collect metrics, monitor application performance, and visualize cluster health.
 
 ## Application Preview
-<img width="1280" height="638" alt="Application Preview" src="https://github.com/user-attachments/assets/5766c6c0-5b0a-42e2-ac2f-e5dca473ba28" />
-
+<img width="1874" height="839" alt="pre" src="https://github.com/user-attachments/assets/7d848859-56aa-4f55-bdc6-513a0a25c3f2" />
