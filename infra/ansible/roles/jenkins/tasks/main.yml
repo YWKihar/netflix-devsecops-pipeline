@@ -1,0 +1,64 @@
+---
+- name: Install Java and prerequisites
+  ansible.builtin.apt:
+    name:
+      - "{{ java_package }}"
+      - fontconfig
+      - ca-certificates
+    state: present
+
+- name: Install Jenkins repository key
+  ansible.builtin.get_url:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    dest: /etc/apt/keyrings/jenkins.asc
+    mode: "0644"
+
+- name: Add Jenkins apt repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/jenkins.asc] https://pkg.jenkins.io/debian-stable binary/"
+    filename: jenkins
+    state: present
+
+- name: Install Jenkins
+  ansible.builtin.apt:
+    name: jenkins
+    state: present
+    update_cache: true
+
+- name: Let the jenkins user run docker
+  ansible.builtin.user:
+    name: jenkins
+    groups: docker
+    append: true
+  notify: Restart Jenkins
+
+- name: Enable and start Jenkins
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+    enabled: true
+
+- name: Apply pending Jenkins restart now
+  ansible.builtin.meta: flush_handlers
+
+- name: Wait for Jenkins to listen
+  ansible.builtin.wait_for:
+    port: "{{ jenkins_port }}"
+    timeout: 180
+
+- name: Wait for the initial admin password file
+  ansible.builtin.wait_for:
+    path: /var/lib/jenkins/secrets/initialAdminPassword
+    timeout: 120
+
+- name: Read the initial admin password
+  ansible.builtin.slurp:
+    src: /var/lib/jenkins/secrets/initialAdminPassword
+  register: jenkins_initial_password
+  no_log: true
+
+- name: Show Jenkins URL and one-time initial password
+  ansible.builtin.debug:
+    msg:
+      - "Jenkins:  http://{{ ansible_host }}:{{ jenkins_port }}"
+      - "Initial admin password (one-time): {{ jenkins_initial_password.content | b64decode | trim }}"

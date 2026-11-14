@@ -1,0 +1,27 @@
+---
+- name: Set vm.max_map_count (required by SonarQube's embedded Elasticsearch)
+  ansible.posix.sysctl:
+    name: vm.max_map_count
+    value: "262144"
+    state: present
+    sysctl_set: true
+    reload: true
+
+- name: Run SonarQube container
+  community.docker.docker_container:
+    name: sonarqube
+    image: "{{ sonarqube_image }}"
+    state: started
+    restart_policy: unless-stopped
+    published_ports:
+      - "{{ sonarqube_port }}:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ulimits:
+      - "nofile:131072:131072"
+
+- name: Show SonarQube URL
+  ansible.builtin.debug:
+    msg: "SonarQube: http://{{ ansible_host }}:{{ sonarqube_port }} (first login admin / admin, then change it). Startup takes 1-2 minutes."

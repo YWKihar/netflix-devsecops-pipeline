@@ -1,0 +1,16 @@
+# ---- Versions (bump here) ----
+prometheus_version: "2.53.0"
+node_exporter_version: "1.8.2"
+sonarqube_image: "sonarqube:lts-community"
+java_package: "openjdk-17-jre"
+
+# ---- Ports ----
+jenkins_port: 8080
+sonarqube_port: 9000
+prometheus_port: 9090
+node_exporter_port: 9100
+grafana_port: 3000
+
+# ---- Prometheus extra scrape targets (add the Kubernetes node later) ----
+# Example: ["10.0.1.25:9100"]
+k8s_node_targets: []

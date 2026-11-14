@@ -1,0 +1,31 @@
+---
+- name: Provision DevSecOps CI server (Jenkins, SonarQube, Trivy, Prometheus, Grafana)
+  hosts: devsecops
+  become: true
+
+  pre_tasks:
+    - name: Check the target is Ubuntu on x86_64
+      ansible.builtin.assert:
+        that:
+          - ansible_distribution == "Ubuntu"
+          - ansible_architecture == "x86_64"
+        fail_msg: "This playbook supports Ubuntu (tested on 24.04 noble) on x86_64 only."
+
+    - name: Refresh apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Create the apt keyrings directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: "0755"
+
+  roles:
+    - { role: docker,     tags: [docker] }
+    - { role: trivy,      tags: [trivy] }
+    - { role: jenkins,    tags: [jenkins] }
+    - { role: sonarqube,  tags: [sonarqube] }
+    - { role: prometheus, tags: [prometheus, monitoring] }
+    - { role: grafana,    tags: [grafana, monitoring] }
