@@ -1,0 +1,12 @@
+services:
+  netflix:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_APP_API_ENDPOINT_URL: ${VITE_APP_API_ENDPOINT_URL}
+        VITE_APP_TMDB_V3_API_KEY: ${VITE_APP_TMDB_V3_API_KEY}
+    container_name: netflix-app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
